@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
 import { Card, Button, Container, Row, Col } from "react-bootstrap";
+
+import { addProduct } from "./api/addProduct";
+import { updateFullProduct } from "./api/updateFullProduct";
+import { updatePartialProduct } from "./api/updatePartialProduct";
+
 import "./App.css";
 
 function App() {
@@ -16,49 +21,6 @@ function App() {
     }, []);
 
     console.log(products);
-
-    async function addProduct() {
-        const response = await fetch("https://fakestoreapi.com/products", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                title: "T-Shirt",
-                price: 20,
-                description: "Un t-shirt super cool.",
-                category: "Haut",
-                image: "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg",
-            }),
-        });
-        const data = await response.json();
-        if (data) {
-            alert(`Le produit avec l'id ${data.id} a été créé`);
-        }
-    }
-
-    async function updateProduct(id) {
-        const response = await fetch(
-            `https://fakestoreapi.com/products/${id}`,
-            {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    title: "T-Shirt",
-                    price: 20,
-                    description: "Un t-shirt super cool.",
-                    category: "Haut",
-                    image: "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg",
-                }),
-            }
-        );
-        const data = await response.json();
-        if (data) {
-            alert(`Le produit avec l'id ${data.id} a été modifié`);
-        }
-    }
 
     return (
         <>
@@ -88,10 +50,23 @@ function App() {
                                         <div className="mt-auto">
                                             <Button
                                                 onClick={() =>
-                                                    updateProduct(product.id)
+                                                    updateFullProduct(
+                                                        product.id
+                                                    )
                                                 }
                                             >
                                                 Modifier le produit complet
+                                            </Button>
+                                            <Button
+                                                onClick={() =>
+                                                    updatePartialProduct(
+                                                        product.id
+                                                    )
+                                                }
+                                                className="mt-2"
+                                                variant="secondary"
+                                            >
+                                                Modifier le prix du produit
                                             </Button>
                                         </div>
                                     </Card.Body>
