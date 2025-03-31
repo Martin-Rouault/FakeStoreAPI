@@ -15,35 +15,42 @@ function App() {
         fetchProducts();
     }, []);
 
+    function addProduct() {
+        alert(`Produit ajouté`);
+    }
+
     return (
-        <Container className="mt-4">
-            <Row>
-                {products &&
-                    products.map((product) => (
-                        <Col key={product.id} md={3} className="mb-4">
-                            <Card className="h-100">
-                                <Card.Img
-                                    variant="top"
-                                    src={product.image}
-                                    alt={product.title}
-                                    style={{
-                                        width: "100%", // Largeur fixe pour s'adapter au Card
-                                        height: "350px", // Hauteur fixe pour uniformiser toutes les images
-                                        objectFit: "cover", // Garde les proportions et remplit l'espace
-                                    }}
-                                />
-                                <Card.Body>
-                                    <Card.Title>{product.title}</Card.Title>
-                                    <Card.Text>{product.description}</Card.Text>
-                                    <p variant="primary" disabled>
-                                        {product.price} €
-                                    </p>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    ))}
-            </Row>
-        </Container>
+        <>
+            <Button className="m-3" onClick={() => addProduct()}>
+                Ajouter un produit
+            </Button>
+            <Container className="mt-4">
+                <Row>
+                    {products &&
+                        products.map((product) => (
+                            <Col key={product.id} md={3} className="mb-4">
+                                <Card className="h-100">
+                                    <Card.Img
+                                        variant="top"
+                                        src={product.image}
+                                        alt={product.title}
+                                        className="card-img"
+                                    />
+                                    <Card.Body>
+                                        <Card.Title>{product.title}</Card.Title>
+                                        <Card.Text>
+                                            {product.description}
+                                        </Card.Text>
+                                        <p variant="primary" disabled>
+                                            {product.price} €
+                                        </p>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                        ))}
+                </Row>
+            </Container>
+        </>
     );
 }
 
