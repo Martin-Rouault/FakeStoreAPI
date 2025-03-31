@@ -4,6 +4,7 @@ import { Card, Button, Container, Row, Col } from "react-bootstrap";
 import { addProduct } from "./api/addProduct";
 import { updateFullProduct } from "./api/updateFullProduct";
 import { updatePartialProduct } from "./api/updatePartialProduct";
+import { deleteProduct } from "./api/deleteProduct";
 
 import "./App.css";
 
@@ -67,6 +68,15 @@ function App() {
                                                 variant="secondary"
                                             >
                                                 Modifier le prix du produit
+                                            </Button>
+                                            <Button
+                                                onClick={() =>
+                                                    deleteProduct(product.id)
+                                                }
+                                                className="mt-2"
+                                                variant="danger"
+                                            >
+                                                Supprimer le produit
                                             </Button>
                                         </div>
                                     </Card.Body>
