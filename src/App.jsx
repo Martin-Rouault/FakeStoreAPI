@@ -26,6 +26,11 @@ function App() {
                                     variant="top"
                                     src={product.image}
                                     alt={product.title}
+                                    style={{
+                                        width: "100%", // Largeur fixe pour s'adapter au Card
+                                        height: "350px", // Hauteur fixe pour uniformiser toutes les images
+                                        objectFit: "cover", // Garde les proportions et remplit l'espace
+                                    }}
                                 />
                                 <Card.Body>
                                     <Card.Title>{product.title}</Card.Title>
