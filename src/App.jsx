@@ -17,15 +17,6 @@ function App() {
 
     console.log(products);
 
-    const newProduct = {
-        id: 0,
-        title: "T-Shirt",
-        price: 20,
-        description: "Un t-shirt super cool.",
-        category: "Haut",
-        image: "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg",
-    };
-
     async function addProduct() {
         const response = await fetch("https://fakestoreapi.com/products", {
             method: "POST",
