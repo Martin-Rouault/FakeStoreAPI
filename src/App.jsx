@@ -3,14 +3,14 @@ import { Card, Button, Container, Row, Col } from "react-bootstrap";
 import "./App.css";
 
 function App() {
-    const [products, setProduct] = useState(null);
+    const [products, setProducts] = useState(null);
 
     useEffect(() => {
         async function fetchProducts() {
             const url = "https://fakestoreapi.com/products";
             const response = await fetch(url);
             const data = await response.json();
-            setProduct(data);
+            setProducts(data);
         }
         fetchProducts();
     }, []);
@@ -35,9 +35,9 @@ function App() {
                                 <Card.Body>
                                     <Card.Title>{product.title}</Card.Title>
                                     <Card.Text>{product.description}</Card.Text>
-                                    <Button variant="primary" disabled>
+                                    <p variant="primary" disabled>
                                         {product.price} €
-                                    </Button>
+                                    </p>
                                 </Card.Body>
                             </Card>
                         </Col>
