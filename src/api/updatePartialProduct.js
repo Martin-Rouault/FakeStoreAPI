@@ -23,8 +23,6 @@ export async function updatePartialProduct(id) {
             alert(`Le prix du produit avec l'id ${data.id} a été modifié`);
         }
     } catch (error) {
-        console.log(error.message);
-    } finally {
-        console.log("Done");
+        alert(error.message);
     }
 }

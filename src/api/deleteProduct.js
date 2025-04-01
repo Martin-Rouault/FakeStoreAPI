@@ -16,8 +16,6 @@ export async function deleteProduct(id) {
             alert(`Le produit avec l'id ${data.id} a été supprimé`);
         }
     } catch (error) {
-        console.log(error.message);
-    } finally {
-        console.log("Done");
+        alert(error.message);
     }
 }
