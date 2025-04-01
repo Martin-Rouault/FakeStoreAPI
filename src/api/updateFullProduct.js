@@ -27,6 +27,7 @@ export async function updateFullProduct(id) {
             alert(`Le produit avec l'id ${data.id} a été modifié`);
         }
     } catch (error) {
+        console.log(error.message);
         alert(error.message);
     }
 }
