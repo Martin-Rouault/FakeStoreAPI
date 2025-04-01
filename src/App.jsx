@@ -10,18 +10,34 @@ import "./App.css";
 
 function App() {
     const [products, setProducts] = useState(null);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetchProducts() {
             const url = "https://fakestoreapi.com/products";
-            const response = await fetch(url);
-            const data = await response.json();
-            setProducts(data);
+            try {
+                const response = await fetch(url);
+
+                if (!response.ok) {
+                    throw new Error(`Erreur HTTP ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                setProducts(data);
+            } catch (error) {
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
         }
         fetchProducts();
     }, []);
 
-    console.log(products);
+    if (error) return <p>Erreur : {error}</p>;
+
+    if (loading) return <p>Chargement ...</p>;
 
     return (
         <>
