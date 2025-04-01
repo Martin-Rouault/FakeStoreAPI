@@ -23,7 +23,12 @@ export async function updatePartialProduct(id) {
             alert(`Le prix du produit avec l'id ${data.id} a été modifié`);
         }
     } catch (error) {
-        console.log(error.message);
-        alert(error.message);
+        console.log(
+            "Erreur lors de la mise à jour partiel du produit :",
+            error.message
+        );
+        alert(
+            `❌ Oups ! Une erreur est survenue.\n\n🛑 Détails : ${error.message}`
+        );
     }
 }

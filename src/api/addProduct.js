@@ -24,7 +24,9 @@ export async function addProduct() {
             alert(`Le produit avec l'id ${data.id} a été créé`);
         }
     } catch (error) {
-        console.log(error.message);
-        alert(error.message);
+        console.log("Erreur lors de l'ajout du produit :", error.message);
+        alert(
+            `❌ Oups ! Une erreur est survenue.\n\n🛑 Détails : ${error.message}`
+        );
     }
 }

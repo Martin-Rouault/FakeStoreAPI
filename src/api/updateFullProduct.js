@@ -27,7 +27,12 @@ export async function updateFullProduct(id) {
             alert(`Le produit avec l'id ${data.id} a été modifié`);
         }
     } catch (error) {
-        console.log(error.message);
-        alert(error.message);
+        console.log(
+            "Erreur lors de la mise à jour complète du produit :",
+            error.message
+        );
+        alert(
+            `❌ Oups ! Une erreur est survenue.\n\n🛑 Détails : ${error.message}`
+        );
     }
 }
