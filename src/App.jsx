@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Card, Button, Container, Row, Col } from "react-bootstrap";
 
-import { useAddProduct } from "./api/addProduct";
-import { useUpdateFullProduct } from "./api/updateFullProduct";
-import { useUpdatePartialProduct } from "./api/updatePartialProduct";
-import { useDeleteProduct } from "./api/deleteProduct";
+import { addProduct } from "./api/addProduct";
+import { updateFullProduct } from "./api/updateFullProduct";
+import { updatePartialProduct } from "./api/updatePartialProduct";
+import { deleteProduct } from "./api/deleteProduct";
 
 import "./App.css";
 
@@ -12,11 +12,6 @@ function App() {
     const [products, setProducts] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
-
-    const { addProduct } = useAddProduct();
-    const { updateFullProduct } = useUpdateFullProduct();
-    const { updatePartialProduct } = useUpdatePartialProduct();
-    const { deleteProduct } = useDeleteProduct();
 
     useEffect(() => {
         async function fetchProducts() {
